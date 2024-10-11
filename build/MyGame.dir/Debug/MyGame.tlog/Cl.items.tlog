@@ -1,0 +1,11 @@
+C:\Users\ef682\Downloads\xcube\src\demo\Main.cpp;C:\Users\ef682\Downloads\xcube\build\MyGame.dir\Debug\Main.obj
+C:\Users\ef682\Downloads\xcube\src\demo\MyGame.cpp;C:\Users\ef682\Downloads\xcube\build\MyGame.dir\Debug\MyGame.obj
+C:\Users\ef682\Downloads\xcube\src\engine\AbstractGame.cpp;C:\Users\ef682\Downloads\xcube\build\MyGame.dir\Debug\AbstractGame.obj
+C:\Users\ef682\Downloads\xcube\src\engine\AudioEngine.cpp;C:\Users\ef682\Downloads\xcube\build\MyGame.dir\Debug\AudioEngine.obj
+C:\Users\ef682\Downloads\xcube\src\engine\EventEngine.cpp;C:\Users\ef682\Downloads\xcube\build\MyGame.dir\Debug\EventEngine.obj
+C:\Users\ef682\Downloads\xcube\src\engine\GraphicsEngine.cpp;C:\Users\ef682\Downloads\xcube\build\MyGame.dir\Debug\GraphicsEngine.obj
+C:\Users\ef682\Downloads\xcube\src\engine\PhysicsEngine.cpp;C:\Users\ef682\Downloads\xcube\build\MyGame.dir\Debug\PhysicsEngine.obj
+C:\Users\ef682\Downloads\xcube\src\engine\ResourceManager.cpp;C:\Users\ef682\Downloads\xcube\build\MyGame.dir\Debug\ResourceManager.obj
+C:\Users\ef682\Downloads\xcube\src\engine\Timer.cpp;C:\Users\ef682\Downloads\xcube\build\MyGame.dir\Debug\Timer.obj
+C:\Users\ef682\Downloads\xcube\src\engine\XCube2d.cpp;C:\Users\ef682\Downloads\xcube\build\MyGame.dir\Debug\XCube2d.obj
+C:\Users\ef682\Downloads\xcube\src\engine\custom\MyEngineSystem.cpp;C:\Users\ef682\Downloads\xcube\build\MyGame.dir\Debug\MyEngineSystem.obj

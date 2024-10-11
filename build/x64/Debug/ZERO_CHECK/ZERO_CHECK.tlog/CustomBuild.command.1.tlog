@@ -1,0 +1,10 @@
+^C:\USERS\EF682\DOWNLOADS\XCUBE\BUILD\CMAKEFILES\E8B56B321CAB2B50F257AF6414D8FC9C\GENERATE.STAMP.RULE
+setlocal
+C:\Users\ef682\Downloads\cmake\bin\cmake.exe -SC:/Users/ef682/Downloads/xcube -BC:/Users/ef682/Downloads/xcube/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Users/ef682/Downloads/xcube/build/MyGame.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

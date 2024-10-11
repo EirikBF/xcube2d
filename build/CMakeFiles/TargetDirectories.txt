@@ -1,0 +1,3 @@
+C:/Users/ef682/Downloads/xcube/build/CMakeFiles/MyGame.dir
+C:/Users/ef682/Downloads/xcube/build/CMakeFiles/ALL_BUILD.dir
+C:/Users/ef682/Downloads/xcube/build/CMakeFiles/ZERO_CHECK.dir
