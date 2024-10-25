@@ -1,9 +1,14 @@
 #include "MyGame.h"
 
-MyGame::MyGame() : AbstractGame(), score(0), lives(3), numKeys(5), gameWon(false), box(5, 5, 30, 30) {
+MyGame::MyGame() : AbstractGame(), score(0), lives(3), numKeys(getRandom(20, 50)), gameWon(false), box(5, 5, 30, 30) {
 	TTF_Font * font = ResourceManager::loadFont("res/fonts/arial.ttf", 72);
 	gfx->useFont(font);
 	gfx->setVerticalSync(true);
+
+	// Create physic objects
+	std::shared_ptr<PhysicsObject> box1 = std::make_shared<PhysicsObject>(Rect(5, 5, 30, 30), true);
+	gameObjects.push_back(box1);
+
 
     for (int i = 0; i < numKeys; i++) {
         std::shared_ptr<GameKey> k = std::make_shared<GameKey>();
@@ -14,14 +19,14 @@ MyGame::MyGame() : AbstractGame(), score(0), lives(3), numKeys(5), gameWon(false
 }
 
 MyGame::~MyGame() {
-
+	
 }
 
 void MyGame::handleKeyEvents() {
-	int speed = 3;
+	int speed = 5;
 
 	if (eventSystem->isPressed(Key::W)) {
-		velocity.y = -speed;
+		gameObjects.front()->applyForce(Vector2f(10, 10));
 	}
 
 	if (eventSystem->isPressed(Key::S)) {
@@ -35,15 +40,19 @@ void MyGame::handleKeyEvents() {
 	if (eventSystem->isPressed(Key::D)) {
 		velocity.x = speed;
 	}
+
 }
 
 void MyGame::update() {
+	for (auto obj : gameObjects) {
+		obj->nextPosition();
+	}
 	box.x += velocity.x;
 	box.y += velocity.y;
 
 	for (auto key : gameKeys) {
 		if (key->isAlive && box.contains(key->pos)) {
-			score += 200;
+			score += 37;
 			key->isAlive = false;
 			numKeys--;
 		}
@@ -58,20 +67,24 @@ void MyGame::update() {
 }
 
 void MyGame::render() {
-	gfx->setDrawColor(SDL_COLOR_RED);
-	gfx->drawRect(box);
+	gfx->setDrawColor(SDL_COLOR_GREEN);
+	//gfx->drawRect(box);
 
-	gfx->setDrawColor(SDL_COLOR_YELLOW);
+	for (auto obj : gameObjects) {
+		gfx->drawRect(obj->getBoxCol());
+	}
+
+	gfx->setDrawColor(SDL_COLOR_BLUE);
 	for (auto key : gameKeys)
         if (key->isAlive)
 		    gfx->drawCircle(key->pos, 5);
 }
 
 void MyGame::renderUI() {
-	gfx->setDrawColor(SDL_COLOR_AQUA);
+	gfx->setDrawColor(SDL_COLOR_ORANGE);
 	std::string scoreStr = std::to_string(score);
 	gfx->drawText(scoreStr, 780 - scoreStr.length() * 50, 25);
 
 	if (gameWon)
-		gfx->drawText("YOU WON", 250, 500);
+		gfx->drawText("Balls Collected", 175, 500);
 }

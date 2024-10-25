@@ -3,6 +3,7 @@
 
 #include <vector>
 #include <memory>
+#include <iostream>
 
 #include "GameMath.h"
 
@@ -35,26 +36,41 @@ class PhysicsObject {
 	protected:
 		Point2 center;
 		float lX, lY, hlX, hlY;	// lengths and half lengths
+		Rect boxCol;
+
+		bool useGravity;
 
 		Vector2f force;
 
-		void applyForce(const Vector2f &);
+		
 	public:
-		PhysicsObject(const Point2 & center, float x, float y);
+		PhysicsObject(const Point2 & center, float x, float y, bool gravity);
+		PhysicsObject(Rect box, bool gravity);
+
+		void applyForce(const Vector2f&);
 
 		Point2 getCenter() { return center; }
+		Rect getBoxCol() { return boxCol; }
 		float getLengthX() { return lX; }
 		float getLengthY() { return lY; }
 		float getHalfLengthX() { return hlX; }
 		float getHalfLengthY() { return hlY; }
+		bool getGravity() { return useGravity; }
+		Vector2f getForce() { return force; }
 
 		bool isColliding(const PhysicsObject & other);
+
+		void setBoxCol(Rect col) { boxCol = col; }
+
 		/**
 		* If we have different implementations of engines/gravity
 		* this can be very useful
 		*/
 		virtual void applyGravity(const PhysicsEngine & engine);
 		virtual void applyAntiGravity(const PhysicsEngine & engine);
+
+		// Calculates objects next position baseon on current force
+		void nextPosition();
 };
 
 #endif

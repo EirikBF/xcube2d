@@ -2,6 +2,8 @@
 #define __TEST_GAME_H__
 
 #include "../engine/AbstractGame.h"
+#include "../engine/PhysicsEngine.h"
+#include <list>
 
 struct GameKey {
 	Point2 pos;
@@ -15,6 +17,7 @@ class MyGame : public AbstractGame {
 		Vector2i velocity;
 
 		std::vector<std::shared_ptr<GameKey>> gameKeys;
+		std::list < std::shared_ptr<PhysicsObject>> gameObjects;
 
 		/* GAMEPLAY */
 		int score, numKeys, lives;
@@ -28,5 +31,6 @@ class MyGame : public AbstractGame {
         MyGame();
 		~MyGame();
 };
+
 
 #endif
